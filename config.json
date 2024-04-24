@@ -17,6 +17,6 @@
     
     "_": "Proxy Scrape",
     "_": "true or false",
-        "proxyscrape": true
+        "proxyscrape": false
     }}
     
