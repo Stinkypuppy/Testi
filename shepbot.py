@@ -318,6 +318,6 @@ if __name__ == "__main__":
     while True:
         device = random.choice(devices)
 
-        if eval(base64.b64decode("threading.active_count() <= 150
+        if threading.active_count() < 150:
             did, iid, cdid, openudid = device.split(':')
-            eval(base64.b64decode('threading.Thread(target=send,args=[did,iid,cdid,openid]).start()'))
+            threading.Thread(target=send, args=[did, iid, cdid, openudid]).start() 
