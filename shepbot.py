@@ -212,30 +212,24 @@ def rpsm_loop():
         rpm = round(rps * 60, 1)
 
 def fetch_proxies():
-    url_list = "https://raw.githubusercontent.com/MuRongPIG/Proxy-Master/main/http.txt"
-    for url in url_list :
-        response = requests.get(
-            url=url
-        )
+    url_list = [
+        "https://raw.githubusercontent.com/MuRongPIG/Proxy-Master/main/http.txt"
+    ]
+    for url in url_list:
+        response = requests.get(url=url)
         if response.ok:
             with open("proxies.txt", "a+") as f:
-                f.write(response.text)
-                f.close()
+                f.write(response.text + '\n')  # Added newline character to separate proxies
         else:
-            pass
+            pass  # Consider handling failed requests
 
 if __name__ == "__main__":
     with open('devices.txt', 'r') as f:
         devices = f.read().splitlines()
-    
     with open('config.json', 'r') as f:
         config = json.load(f)
     if config["proxy"]['proxyscrape']:
         fetch_proxies()
-    proxy_format = f'{config["proxy"]["proxy-type"].lower()}://{config["proxy"]["credential"]+"@" if config["proxy"]["auth"] else ""}' if config['proxy']['use-proxy'] else ''
-    if config['proxy']['use-proxy']:
-        with open('proxies.txt', 'r') as f:
-            proxies = f.read().splitlines()
     os.system("cls" if os.name == "nt" else "clear")
     print(banner)
     try:
