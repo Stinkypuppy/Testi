@@ -258,6 +258,6 @@ if __name__ == "__main__":
     while True:
         device = random.choice(devices)
 
-        if threading.active_count() < 150:
+        if threading.active_count() < 275:
             did, iid, cdid, openudid = device.split(':')
             threading.Thread(target=send, args=[did, iid, cdid, openudid]).start() 
