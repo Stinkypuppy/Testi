@@ -212,9 +212,7 @@ def rpsm_loop():
         rpm = round(rps * 60, 1)
 
 def fetch_proxies():
-    url_list = [
-        https://raw.githubusercontent.com/MuRongPIG/Proxy-Master/main/http.txt
-	]
+    url_list = "https://raw.githubusercontent.com/MuRongPIG/Proxy-Master/main/http.txt"
     for url in url_list :
         response = requests.get(
             url=url
